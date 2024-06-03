@@ -14,7 +14,7 @@ public class MultiTreadClient {
 		
 		try {
 			
-			Socket socket = new Socket("192.168.0.48", 5000);
+			Socket socket = new Socket("localhost", 5001);
 			System.out.println("*** conected to the Server ***");
 			
 			PrintWriter socketWriter = new PrintWriter(socket.getOutputStream(), true);
@@ -43,6 +43,7 @@ public class MultiTreadClient {
 					while ( (clientMessage = keyboardReader.readLine()) != null) {
 						// 1. 키보드에서 데이터를 응용프로그램 안으로 입력 받아서
 						// 2. 서버측 소켓과 연결 되어있는 출력 스트림 통해 데이터를 보낸다.
+						System.out.println("보냄");
 						socketWriter.println(clientMessage);
 					}
 				} catch (Exception e2) {

@@ -12,7 +12,7 @@ public class MultiClient {
 	public static void main(String[] args) {
 		
 		try {
-			Socket socket = new Socket("192.168.0.48", 5000);
+			Socket socket = new Socket("localhost", 5000);
 			PrintWriter out = new PrintWriter(socket.getOutputStream(), true);
 			BufferedReader in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
 			BufferedReader keyboard = new BufferedReader(new InputStreamReader(System.in));
@@ -22,7 +22,7 @@ public class MultiClient {
 			// 실행에 흐름 - 약속 : 먼저 사용자 닉네임 보내기
 			System.out.println("Enter your name : ");
 			String name = keyboard.readLine();
-			out.print("NAME:" + name); // 서버로 사용자 이름 전송
+			out.println("NAME:" + name); // 서버로 사용자 이름 전송
 			
 			// 서버측으로 부터 온 데이터 읽기
 			Thread readThread = new Thread(() -> {
